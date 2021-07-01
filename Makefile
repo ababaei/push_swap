@@ -6,13 +6,13 @@ OBJ = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
-all:LIBFT PUSH_SWAP
+all:LIBFT $(NAME)
 
 LIBFT:
-	make -C libft/ bonus
+	make -C libft/ 
 
-PUSH_SWAP:$(OBJ)
-	$(CC) $(OBJ) $(FLAGS) -Llibft/ -lft -o $(NAME)
+$(NAME):$(OBJ)
+	$(CC) $(SRC) $(FLAGS) -Llibft/ -lft -o $(NAME)
 
 clean:
 	rm -f *.o 

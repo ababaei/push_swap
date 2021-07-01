@@ -6,7 +6,7 @@
 #    By: ababaei <ababaei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/19 14:01:35 by ababaei           #+#    #+#              #
-#    Updated: 2021/06/25 17:34:54 by ababaei          ###   ########.fr        #
+#    Updated: 2021/07/01 03:23:28 by ababaei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,16 +50,15 @@ SRC = ft_atoi.c \
 		ft_toupper.c \
 		ft_itoa_base.c \
 		ft_itoa_base_u.c \
-
-SRC_BONUS = ft_lstadd_back.c \
-			ft_lstadd_front.c \
-			ft_lstclear.c \
-			ft_lstdelone.c \
-			ft_lstiter.c \
-			ft_lstlast.c \
-			ft_lstmap.c \
-			ft_lstnew.c \
-			ft_lstsize.c
+		ft_lstadd_back.c \
+		ft_lstadd_front.c \
+		ft_lstclear.c \
+		ft_lstdelone.c \
+		ft_lstiter.c \
+		ft_lstlast.c \
+		ft_lstmap.c \
+		ft_lstnew.c \
+		ft_lstsize.c
 
 NAME = libft.a
 
@@ -75,9 +74,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
-
-bonus: $(OBJ_BONUS) $(OBJ)
-	ar rc $(NAME) $(OBJ_BONUS) $(OBJ)
 
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)
