@@ -6,7 +6,7 @@
 /*   By: ababaei <ababaei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 00:47:16 by ababaei           #+#    #+#             */
-/*   Updated: 2021/07/01 03:53:57 by ababaei          ###   ########.fr       */
+/*   Updated: 2021/07/02 03:25:33 by ababaei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,37 @@
 
 int main(int argc, char **argv)
 {
-	t_list *t_stack_a;
-	t_list *t_stack_b;
+	t_list	*t_stack_a;
+	t_list	*t_stack_b;
+	int		*num_list;
+	int i = 0;
 
 	if (argc == 1)
 		return (EXIT_FAILURE);
+	num_list = malloc(sizeof(int) * argc - 1);
+	fill_num_array(argc, argv, &num_list);
 	t_stack_a = init_stacks(argc, argv);
 	t_stack_b = ft_lstnew(&argc);
+	while (i < argc - 1)
+	{
+		printf("int = %d\n", num_list[i]);
+		i++;
+	}
 	if (t_stack_a == NULL || t_stack_b == NULL)
 		return (EXIT_FAILURE);
-	//ft_lstiter(t_stack_a, &print_stack);
 	return (EXIT_SUCCESS);
+}
+
+void fill_num_array(int argc, char **argv, int **num_list)
+{
+	int i;
+
+	i = 0;
+	while (i < argc - 1)
+	{
+		(*num_list)[i] = ft_atoi(argv[i + 1]);
+		i++;
+	}
 }
 
 t_list *init_stacks(int argc, char **argv)
@@ -38,29 +58,27 @@ t_list *init_stacks(int argc, char **argv)
 
 	i = 2;
 	arg_num = ft_atoi(argv[1]);
-	printf("num = %d\n",arg_num);
-	new = ft_lstnew(&arg_num);
-	printf("new = %p\n", &new);
+	tmp = ft_lstnew(&arg_num);
 	if (tmp == NULL)
 		return (NULL);
 	while (i < argc)
 	{
 		arg_num = ft_atoi(argv[i]);
-		printf("num = %d\n",arg_num);
-		new = ft_lstnew(&arg_num);
-		printf("new = %p\n", &new);
+		new = (t_list *)malloc(sizeof(t_list));
+		if (new == NULL)
+			return(NULL);
+		new->content = &arg_num;
 		ft_lstadd_front(&tmp, new);
-		if (tmp == NULL)
-			return (NULL);
 		i++;
 	}
-/*
+
+
 	while (tmp)
 	{
 		printf("ptr = %p\n", tmp);
 		printf("content = %d\n", *(int*)tmp->content);
 		tmp = tmp->next;		
-	}*/
+	}
 	return (tmp);
 }
 

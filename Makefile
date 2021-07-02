@@ -3,7 +3,7 @@ CC = gcc
 SRC = main.c
 OBJ = $(SRC:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 NAME = push_swap
 
 all:LIBFT $(NAME)
