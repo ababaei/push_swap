@@ -25,12 +25,18 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	num_list = malloc(sizeof(int) * argc - 1);
 	fill_num_array(argc, argv, &num_list);
-	t_stack_a = init_stacks(argc, argv);
+	t_stack_a = init_stacks(argc, num_list);
 	t_stack_b = ft_lstnew(&argc);
 	while (i < argc - 1)
 	{
 		printf("int = %d\n", num_list[i]);
 		i++;
+	}
+	while (t_stack_a)
+	{
+	//	printf("ptr = %p\n", t_stack_a);
+		printf("content = %d\n", *(int*)t_stack_a->content);
+		t_stack_a = t_stack_a->next;		
 	}
 	if (t_stack_a == NULL || t_stack_b == NULL)
 		return (EXIT_FAILURE);
@@ -49,35 +55,24 @@ void fill_num_array(int argc, char **argv, int **num_list)
 	}
 }
 
-t_list *init_stacks(int argc, char **argv)
+t_list *init_stacks(int argc, int *num_list)
 {
 	t_list *tmp;
 	t_list *new;
-	int arg_num;
 	int i;
 
-	i = 2;
-	arg_num = ft_atoi(argv[1]);
-	tmp = ft_lstnew(&arg_num);
+	i = 1;
+	tmp = ft_lstnew(&num_list[0]);
 	if (tmp == NULL)
 		return (NULL);
-	while (i < argc)
+	while (i < argc - 1)
 	{
-		arg_num = ft_atoi(argv[i]);
 		new = (t_list *)malloc(sizeof(t_list));
 		if (new == NULL)
 			return(NULL);
-		new->content = &arg_num;
+		new->content = &num_list[i];
 		ft_lstadd_front(&tmp, new);
 		i++;
-	}
-
-
-	while (tmp)
-	{
-		printf("ptr = %p\n", tmp);
-		printf("content = %d\n", *(int*)tmp->content);
-		tmp = tmp->next;		
 	}
 	return (tmp);
 }
