@@ -1,6 +1,9 @@
 CC = gcc
 
-SRC = main.c
+SRC = main.c \
+	  init.c \
+	  debug.c
+
 OBJ = $(SRC:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror -g
