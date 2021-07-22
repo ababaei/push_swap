@@ -18,6 +18,12 @@
 
 /*
  * bien penser a garder et a suivre l'adresse de la tete de liste
+ *
+ * Main.c will manage everything:
+ *		-first we need to check the input is OK (letters, INTMAX/MIN)
+ *		-If it's ok we can init the stacks and fill stack A
+ *		-Then we need to choose the sorting algo <10 or >10 numbers (radix sort)
+ *		-There is also some functions to debug (print_stack) 
  */
 
 int main(int argc, char **argv)

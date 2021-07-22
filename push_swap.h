@@ -4,6 +4,7 @@
 typedef struct		s_list
 {
 	int				content;
+	int				b_indice;
 	int				indice;
 	struct s_list	*next;
 }					t_list;
