@@ -9,9 +9,9 @@ int	nbr_base(char c, int base)
 			(c >= 'a' && c <= ('a' + base - 10)));
 }
 
-int	fill_nbr(char *nptr, long int nbr, int base)
+long	fill_nbr(char *nptr, long nbr, int base)
 {
-	long int tmp;
+	long tmp;
 
 	tmp = nbr;
 	if (*nptr <= 65 + base && *nptr >= 65) 
@@ -25,12 +25,11 @@ int	fill_nbr(char *nptr, long int nbr, int base)
 
 long ft_strtol(char *nptr, char **endptr, int base)
 {
-	long int	tmp;
-	long int	neg;
+	long	tmp;
+	long	neg;
 
 	neg = 1;
 	tmp = 0;
-	//printf ("test = %s\n", nptr);
 	while (*nptr && (*nptr == ' '
 			|| (*nptr >= 9 && *nptr <= 13)))
 		nptr++;
@@ -46,20 +45,20 @@ long ft_strtol(char *nptr, char **endptr, int base)
 		nptr++;
 	}
 	*endptr = nptr;
-	//printf ("test = %s\n", nptr);
 	return (tmp * neg);
 }
 
 int main(void)
 {
-	long int i = 0;
-	char *nptr = "aFdC1234 si tes cho";
+	long i = 0;
+	long n = 0;
+	char *nptr = "9223372036854775808 si tes cho";
 	char *end;
 
-	i = strtol(nptr, &end, 16);
+	i = strtol(nptr, &end, 10);
 	printf("i = %li\nend = %s\n",i, end);
-	i = ft_strtol(nptr, &end, 16);
-	printf("i = %li\nend = %s\n",i, end);
+	n = ft_strtol(nptr, &end, 10);
+	printf("n = %li\nend = %s\n",n, end);
 
 	return (EXIT_SUCCESS);
 }

@@ -17,7 +17,7 @@
 #define DEBUG true
 
 /*
- * bien penser a garder et a suivre l'adresse de la tete de liste
+ * keep track of the chainlist head's adress
  *
  * Main.c will manage everything:
  *		-first we need to check the input is OK (letters, INTMAX/MIN)
