@@ -1,20 +1,21 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <limits.h>
 
 int	nbr_base(char c, int base)
 {
 	if (base <= 10)
-		return(c <= '9' && c >= '0');
+		return (c <= '9' && c >= '0');
 	return ((c <= '9' && c >= '0') || (c >= 'A' && c <= ('A' + base - 10)) || \
 			(c >= 'a' && c <= ('a' + base - 10)));
 }
 
-long	fill_nbr(char *nptr, long nbr, int base)
+long	fill_nbr(char *nptr, long long nbr, int base)
 {
-	long tmp;
+	long	tmp;
 
 	tmp = nbr;
-	if (*nptr <= 65 + base && *nptr >= 65) 
+	if (*nptr <= 65 + base && *nptr >= 65)
 		tmp = tmp * base + (*nptr - 55);
 	else if (*nptr <= 97 + base && *nptr >= 97)
 		tmp = tmp * base + (*nptr - 87);
@@ -23,10 +24,10 @@ long	fill_nbr(char *nptr, long nbr, int base)
 	return (tmp);
 }
 
-long ft_strtol(char *nptr, char **endptr, int base)
+long	ft_strtol(char *nptr, char **endptr, int base)
 {
 	long	tmp;
-	long	neg;
+	int		neg;
 
 	neg = 1;
 	tmp = 0;
@@ -47,18 +48,17 @@ long ft_strtol(char *nptr, char **endptr, int base)
 	*endptr = nptr;
 	return (tmp * neg);
 }
-
+/*
 int main(void)
 {
 	long i = 0;
 	long n = 0;
-	char *nptr = "9223372036854775808 si tes cho";
+	char *nptr = "+125";
 	char *end;
 
 	i = strtol(nptr, &end, 10);
-	printf("i = %li\nend = %s\n",i, end);
+	printf("i = %li\nend = %i\n",i, end[0]);
 	n = ft_strtol(nptr, &end, 10);
-	printf("n = %li\nend = %s\n",n, end);
-
+	printf("n = %li\nend = %i\n",n, end[0]);
 	return (EXIT_SUCCESS);
-}
+}*/

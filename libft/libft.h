@@ -56,6 +56,7 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+long				ft_strtol(char *nptr, char **endnptr, int base);
 
 t_list				*ft_lstnew(int content);
 void				ft_lstadd_front(t_list **alst, t_list *new);

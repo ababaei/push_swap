@@ -38,7 +38,9 @@ int main(int argc, char **argv)
 	if (DEBUG)
 		print_stack(t_stack_a);
 	if (t_stack_a == NULL || t_stack_b == NULL)
+	{
+		printf("ERROR GROS BOUFFON\n");
 		return (EXIT_FAILURE);
-	
+	}
 	return (EXIT_SUCCESS);
 }
