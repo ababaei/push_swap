@@ -20,8 +20,8 @@
  * keep track of the chainlist head's adress
  *
  * Main.c will manage everything:
- *		-first we need to check the input is OK (letters, INTMAX/MIN)
- *		-If it's ok we can init the stacks and fill stack A
+ *		-first we need to check the input is OK (letters, INTMAX/MIN, doubles) -> done in init_stacks() 
+ *		-If it's ok we can init the stacks and fill stack A -> init_stacks()
  *		-Then we need to choose the sorting algo <10 or >10 numbers (radix sort)
  *		-There is also some functions to debug (print_stack) 
  */
@@ -34,13 +34,14 @@ int main(int argc, char **argv)
 	if (argc == 1)
 		return (EXIT_FAILURE);
 	t_stack_a = init_stacks(argc, argv);
-	t_stack_b = ft_lstnew(0);
+	t_stack_b = malloc(sizeof(t_list));
 	if (DEBUG)
-		print_stack(t_stack_a);
+		print_stack(t_stack_a, t_stack_b);
 	if (t_stack_a == NULL || t_stack_b == NULL)
-	{
+	
 		printf("ERROR GROS BOUFFON\n");
 		return (EXIT_FAILURE);
 	}
+	t_stack_b->next = NULL;
 	return (EXIT_SUCCESS);
 }
