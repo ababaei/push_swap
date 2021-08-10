@@ -65,7 +65,7 @@ t_list *init_stacks(int argc, char **argv)
 			return(NULL);
 		new->content = ft_atoi(argv[i]);
 		//new->indice = find_indice()
-		ft_lstadd_front(&tmp, new);
+		ft_lstadd_back(&tmp, new);
 		i++;
 	}
 	if (check_double(tmp) == 0)

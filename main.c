@@ -35,13 +35,17 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	t_stack_a = init_stacks(argc, argv);
 	t_stack_b = malloc(sizeof(t_list));
-	if (DEBUG)
-		print_stack(t_stack_a, t_stack_b);
 	if (t_stack_a == NULL || t_stack_b == NULL)
-	
+	{	
 		printf("ERROR GROS BOUFFON\n");
 		return (EXIT_FAILURE);
 	}
 	t_stack_b->next = NULL;
+	if (DEBUG)
+		print_stack(t_stack_a, t_stack_b);
+	swap_stack(&t_stack_a);
+	print_stack(t_stack_a, t_stack_b);
+	rev_rotate_stack(&t_stack_a);
+	print_stack(t_stack_a, t_stack_b);
 	return (EXIT_SUCCESS);
 }

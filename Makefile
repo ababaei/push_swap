@@ -2,7 +2,11 @@ CC = gcc
 
 SRC = main.c \
 	  init.c \
-	  debug.c
+	  debug.c \
+	  swap_set.c \
+	  rotate_set.c \
+	  push_set.c
+	
 
 OBJ = $(SRC:.c=.o)
 
