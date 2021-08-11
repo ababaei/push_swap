@@ -17,3 +17,31 @@ void print_stack(t_list *stack_a, t_list *stack_b)
 	}
 	printf("\n__________________\n");
 }
+
+void print_item(t_list *stack)
+{
+	char *sep = "______________________\n";
+	int slen;
+
+	slen = (int)ft_strlen(sep) - 3;
+	printf("%s", sep);
+	printf("| %-*p |\n\
+| %-*d |\n\
+| indice = %-*d |\n\
+| b_indice = %-*s |\n\
+| %-*p |\n",
+			slen,stack,
+			slen, stack->content,
+			slen - 9,stack->indice,
+			slen - 11,stack->b_indice,
+			slen,stack->next);
+}
+
+void print_all_items(t_list *stack)
+{
+	while (stack)
+	{
+		print_item(stack);	
+		stack = stack->next;
+	}
+}

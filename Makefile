@@ -3,6 +3,7 @@ CC = gcc
 SRC = main.c \
 	  init.c \
 	  debug.c \
+	  check_stack.c \
 	  swap_set.c \
 	  rotate_set.c \
 	  push_set.c

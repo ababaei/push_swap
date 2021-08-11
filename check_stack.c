@@ -1,45 +1,56 @@
-int check_limit(char *arg)
-{
-	
-}
+#include "libft/libft.h"
+#include <stdio.h>
+#include <limits.h>
 
-int check_char(char *arg)
-{
-	int i;
-	int flag_sign;
+/*
+ *	In this file we will check the arguments given for doubles, letters and int limits.
+ *	With the help of ft_strtol i can check for letters and limits.
+ *	Is_sorted let me check if the stack is sorted.
+ *	And in check_doubles() i'll look for arguments that appears two or more times.
+*/
 
-	i = 0;
-	flag_sign = 0;
-	while (arg[i])
+int is_sorted(t_list *stack)
+{
+	while (stack->next)
 	{
-		if ((arg[i] != '-' || arg[i] != '+')
-				&& (arg[i] <= '0' && arg[i] >= '9'))
+		if (stack->content > stack->next->content)
 			return (0);
-		if (arg[i] == '+')
-		{
-			if (flag_sign)
-				return (0);
-			flag_sign = 1;
-		}
-		i++;
+		stack = stack->next;
 	}
 	return (1);
 }
 
-int isStackOk(int argc, char **argv)
+int	check_double(t_list *stack)
 {
-	int i;
+	t_list *head;
+	t_list *cursor;
+	int tmp;
 
-	i = 1;
-	while (i < argc)
+	head = stack;
+	while (stack)
 	{
-		if (check_char(argv[i]) == 0)
-			return (0);
-		if (check_limit(argv[i]) == 0)
-			return (0);
-		if (check_double(argv[i]) == 0)
-			return (0);
-		i++;
+		cursor = head;
+		tmp = stack->content;
+		while (cursor)
+		{
+			if (cursor->content == tmp && stack != cursor)
+				return (0);
+			cursor = cursor->next;	
+		}
+		stack = stack->next;
 	}
+	return (1);
+}
+
+int	check_arg(char *arg)
+{
+	long nbr;
+	char *end;
+
+	nbr = ft_strtol(arg, &end, 10);
+	if (end[0] != 0)
+		return (0);
+	if (nbr > INT_MAX || nbr < INT_MIN)
+		return (0);
 	return (1);
 }

@@ -37,7 +37,7 @@ char	*ft_itoa_base(__intmax_t nb, char *base)
 	tmp = ft_abs(nb);
 	baselen = ft_strlen(base);
 	len = convert_len(nb, baselen);
-	if (nb < 0)
+	if (nb <= 0)
 		len++;
 	ret = malloc(sizeof(char) * (len + 1));
 	ret[len] = '\0';
@@ -52,3 +52,11 @@ char	*ft_itoa_base(__intmax_t nb, char *base)
 		ret[0] = '-';
 	return (ret);
 }
+/*
+int main(void)
+{
+	char *str;
+
+	str = ft_itoa_base(0, "01");
+	printf("str = %s\n", str);
+}*/

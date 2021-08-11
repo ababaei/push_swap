@@ -3,45 +3,36 @@
 #include <limits.h>
 
 /*
- *	In this file we will check the arguments given for doubles, letters and int limits.
- *	Then I initialize the stack and fill the content variable.
- *	With the help of ft_strtol i can check for letters and limits.
- *	And in check_doubles() i'll look for arguments that appears two or more times.
+ * In this file i have my init stack function, it will check if everything is ok and then fill the variables.
+ * the checking functions are in the check_stack.c file
+ * Then I initialize the stack and fill the content variable.
+ * After the list is filled, I use an other function to find each nbr indice and its binary equivalent
  */
 
-int	check_double(t_list *stack)
+void	find_indice(t_list **stack)
 {
+	int tmp;
 	t_list *head;
 	t_list *cursor;
-	int tmp;
 
-	head = stack;
-	while (stack)
+	head = *stack;
+	while (*stack)
 	{
+		(*stack)->indice = 0;
 		cursor = head;
-		tmp = stack->content;
+		tmp = (*stack)->content;
+		//printf("stack = %d\n", tmp);
 		while (cursor)
 		{
-			if (cursor->content == tmp && stack != cursor)
-				return (0);
-			cursor = cursor->next;	
+			//printf("	tmp = %d | content = %d\n", tmp, cursor->content);
+			if (tmp != cursor->content && tmp > cursor->content)
+				(*stack)->indice++;
+			cursor = cursor->next;
 		}
-		stack = stack->next;
+		(*stack)->b_indice = ft_itoa_base((*stack)->indice, "01");
+		*stack = (*stack)->next;
 	}
-	return (1);
-}
-
-int	check_arg(char *arg)
-{
-	long nbr;
-	char *end;
-
-	nbr = ft_strtol(arg, &end, 10);
-	if (nbr > INT_MAX || nbr < INT_MIN)
-		return (0);
-	if (end[0] != 0)
-		return (0);
-	return (1);
+	*stack = head;
 }
 
 t_list *init_stacks(int argc, char **argv)
@@ -64,10 +55,10 @@ t_list *init_stacks(int argc, char **argv)
 		if (new == NULL)
 			return(NULL);
 		new->content = ft_atoi(argv[i]);
-		//new->indice = find_indice()
 		ft_lstadd_back(&tmp, new);
 		i++;
 	}
+	find_indice(&tmp);
 	if (check_double(tmp) == 0)
 		return (NULL);
 	return (tmp);
