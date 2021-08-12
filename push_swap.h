@@ -24,4 +24,6 @@ void	rotate_stack(t_list **stack);
 void	rev_rotate_stack(t_list **stack);
 void	push_stack(t_list **from, t_list **to);
 
+int		sort_manager(t_list	**stack_a, t_list **stack_b, char ***lst);
+
 #endif

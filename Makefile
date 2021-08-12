@@ -6,6 +6,7 @@ SRC = main.c \
 	  check_stack.c \
 	  swap_set.c \
 	  rotate_set.c \
+	  sort_manager.c \
 	  push_set.c
 	
 
