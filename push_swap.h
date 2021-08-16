@@ -1,6 +1,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+typedef struct		s_exec
+{
+	char			*content;
+	struct s_exec	*next;
+}					t_exec;
+
 typedef struct		s_list
 {
 	int				content;
@@ -24,6 +30,7 @@ void	rotate_stack(t_list **stack);
 void	rev_rotate_stack(t_list **stack);
 void	push_stack(t_list **from, t_list **to);
 
-int		sort_manager(t_list	**stack_a, t_list **stack_b, char ***lst);
+int		sort_manager(t_list	**stack_a, t_list **stack_b, t_exec **lst);
+t_exec *sort_3(t_list **stack_a, t_list **stack_b);
 
 #endif

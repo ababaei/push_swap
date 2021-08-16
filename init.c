@@ -11,7 +11,6 @@
 
 void	find_indice(t_list **stack)
 {
-	int tmp;
 	t_list *head;
 	t_list *cursor;
 
@@ -20,12 +19,9 @@ void	find_indice(t_list **stack)
 	{
 		(*stack)->indice = 0;
 		cursor = head;
-		tmp = (*stack)->content;
-		//printf("stack = %d\n", tmp);
 		while (cursor)
 		{
-			//printf("	tmp = %d | content = %d\n", tmp, cursor->content);
-			if (tmp != cursor->content && tmp > cursor->content)
+			if ((*stack)->content > cursor->content)
 				(*stack)->indice++;
 			cursor = cursor->next;
 		}

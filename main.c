@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 {
 	t_list	*t_stack_a;
 	t_list	*t_stack_b;
-	char 	**exec_list;
+	t_exec 	*exec_list;
 
 	if (argc == 1)
 		return (EXIT_FAILURE);
@@ -47,8 +47,6 @@ int main(int argc, char **argv)
 	if (DEBUG)
 		print_all_items(t_stack_a);
 		//print_stack(t_stack_a, t_stack_b);
-	exec_list = malloc(sizeof(char *) * argc);
-	exec_list[argc] = NULL;
 	sort_manager(&t_stack_a, &t_stack_b, &exec_list);	
 	/*
 	swap_stack(&t_stack_a);

@@ -6,8 +6,9 @@ SRC = main.c \
 	  check_stack.c \
 	  swap_set.c \
 	  rotate_set.c \
+	  push_set.c \
 	  sort_manager.c \
-	  push_set.c
+	  sort_3.c
 	
 
 OBJ = $(SRC:.c=.o)
