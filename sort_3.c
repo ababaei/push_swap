@@ -9,27 +9,35 @@ char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins)
 	return (ins);	
 }
 
-void	sort_3(t_list **stack_a, t_list **stack_b, t_list **lst)
+t_exec	*sort_3(t_list **stack_a, t_list **stack_b)
 {
-	t_list *head;
-	t_list *new;
+	t_exec *head;
+	t_exec *new;
+	t_exec *lst;
 
-	(void)stack_b;
-	head = *lst;
+	//(void)stack_b;
+	lst = malloc(sizeof(lst));
+	if (lst == NULL)
+		return (NULL);
+	lst->next = NULL;
+	head = lst;
+	printf("TOTO\n");
 	while (!is_sorted(*stack_a))
 	{
 		if ((*stack_a)->content == 2 && (*stack_a)->next->content == 1)
-			(*lst)->ins = exe_instruction(stack_a, stack_b, "sa");
+			lst->ins = exe_instruction(stack_a, stack_b, "sa");
 		else if ((*stack_a)->content == 3 && (*stack_a)->next->content == 1)
-			(*lst)->ins = exe_instruction(stack_a, stack_b, "ra");
+			lst->ins = exe_instruction(stack_a, stack_b, "ra");
 		else if ((*stack_a)->content == 2 && (*stack_a)->next->content == 3)
-			(*lst)->ins = exe_instruction(stack_a, stack_b, "rra");
+			lst->ins = exe_instruction(stack_a, stack_b, "rra");
+		print_stack(*stack_a, *stack_b);
 		if (!is_sorted(*stack_a))
 		{
-			*lst = (*lst)->next;
-			new = malloc(sizeof(t_list));
-			ft_lstadd_back(lst, new);
+			new = malloc(sizeof(t_exec));
+			exe_lstadd_back(&lst, new);
+			//lst = lst->next;
 		}
 	}
-	*lst = head;
+	lst = head;
+	return (lst);
 }

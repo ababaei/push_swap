@@ -35,8 +35,6 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	t_stack_a = init_stacks(argc, argv);
 	t_stack_b = malloc(sizeof(t_list));
-	exec_list = malloc(sizeof(t_list));
-	print_all_items(t_stack_a);
 	if (t_stack_a == NULL || t_stack_b == NULL)
 	{	
 		printf("ERROR GROS BOUFFON\n");
@@ -46,9 +44,10 @@ int main(int argc, char **argv)
 		printf("SORTED\n");
 	t_stack_b->next = NULL;
 	if (DEBUG)
-		print_stack(t_stack_a, t_stack_b);
+		print_all_items(t_stack_a);
 		//print_all_items(t_stack_a);
 	sort_manager(&t_stack_a, &t_stack_b);	
+	print_stack(t_stack_a, t_stack_b);
 	/*
 	swap_stack(&t_stack_a);
 	print_stack(t_stack_a, t_stack_b);
