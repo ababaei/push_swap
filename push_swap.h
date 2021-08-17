@@ -3,9 +3,9 @@
 
 typedef struct		s_exec
 {
-	char			*content;
+	char	*ins;
 	struct s_exec	*next;
-}					t_exec;
+}					t_exec
 
 typedef struct		s_list
 {
@@ -30,7 +30,7 @@ void	rotate_stack(t_list **stack);
 void	rev_rotate_stack(t_list **stack);
 void	push_stack(t_list **from, t_list **to);
 
-int		sort_manager(t_list	**stack_a, t_list **stack_b, t_exec **lst);
-t_exec *sort_3(t_list **stack_a, t_list **stack_b);
+int		sort_manager(t_list	**stack_a, t_list **stack_b);
+void 	sort_3(t_list **stack_a, t_list **stack_b, t_list **lst);
 
 #endif
