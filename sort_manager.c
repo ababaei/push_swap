@@ -7,11 +7,17 @@
 
 int		sort_manager(t_list **stack_a, t_list **stack_b)
 {
+	t_exec *exec_list;
+
 	int size;
-	printf("TATA\n");
 	size = ft_lstsize(*stack_a);
 	if (size <= 3)
-		sort_3(stack_a, stack_b);
+		exec_list = sort_3(stack_a, stack_b);
+	while (exec_list)
+	{		
+		printf ("%s\n", exec_list->ins);
+		exec_list = exec_list->next;
+	}
 /*	else if (size > 3 && size <= 5)
 		*lst = sort_5(stack_a, stack_b);
 	else

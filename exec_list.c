@@ -1,4 +1,5 @@
 #include "libft/libft.h"
+#include <stdio.h>
 
 void	exe_lstadd_back(t_exec **alst, t_exec *new)
 {
@@ -10,8 +11,8 @@ void	exe_lstadd_back(t_exec **alst, t_exec *new)
 		*alst = new;
 		return ;
 	}
-	while (*alst)
+	while ((*alst)->next)
 		*alst = (*alst)->next;
 	(*alst)->next = new;
 	*alst = head;
-}	
+}
