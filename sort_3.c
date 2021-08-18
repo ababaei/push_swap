@@ -25,34 +25,24 @@ char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins)
 
 t_exec	*sort_3(t_list **stack_a, t_list **stack_b)
 {
-	t_exec *head;
 	t_exec *new;
 	t_exec *lst;
 
-	lst = malloc(sizeof(lst));
-	if (lst == NULL)
-		return (NULL);
-	lst->next = NULL;
-	head = lst;
+	lst = NULL;
 	while (!is_sorted(*stack_a))
 	{
+		new = malloc(sizeof(t_exec));
+		new->next = NULL;
 		print_stack(*stack_a, *stack_b);
 		if (((*stack_a)->indice == 1 && (*stack_a)->next->indice == 0)
 			|| ((*stack_a)->indice == 2 && (*stack_a)->next->indice == 1)
 			|| ((*stack_a)->indice == 0 && (*stack_a)->next->indice == 2))
-			lst->ins = exe_instruction(stack_a, stack_b, "sa");
+			new->ins = exe_instruction(stack_a, stack_b, "sa");
 		else if ((*stack_a)->indice == 2 && (*stack_a)->next->indice == 0)
-			lst->ins = exe_instruction(stack_a, stack_b, "ra");
+			new->ins = exe_instruction(stack_a, stack_b, "ra");
 		else if ((*stack_a)->indice == 1 && (*stack_a)->next->indice == 2)
-			lst->ins = exe_instruction(stack_a, stack_b, "rra");
-		if (!is_sorted(*stack_a))
-		{
-			new = malloc(sizeof(t_exec));
-			new->next = NULL;
-			exe_lstadd_back(&lst, new);
-			lst = lst->next;
-		}
+			new->ins = exe_instruction(stack_a, stack_b, "rra");
+		exe_lstadd_back(&lst, new);
 	}
-	lst = head;
 	return (lst);
 }
