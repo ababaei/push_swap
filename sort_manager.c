@@ -11,8 +11,13 @@ int		sort_manager(t_list **stack_a, t_list **stack_b)
 
 	int size;
 	size = ft_lstsize(*stack_a);
-	if (size <= 3)
+	printf("size = %i\n", size);
+	if (size == 2)
+		exec_list = sort_2(stack_a, stack_b);
+	else if (size == 3)
 		exec_list = sort_3(stack_a, stack_b);
+	else if (size <= 5)
+		exec_list = sort_5(stack_a, stack_b);
 	while (exec_list)
 	{		
 		printf ("%s\n", exec_list->ins);

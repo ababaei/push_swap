@@ -34,17 +34,16 @@ int main(int argc, char **argv)
 	if (argc == 1)
 		return (EXIT_FAILURE);
 	t_stack_a = init_stacks(argc, argv);
-	t_stack_b = malloc(sizeof(t_list));
-	if (t_stack_a == NULL || t_stack_b == NULL)
+	t_stack_b = NULL;
+	if (t_stack_a == NULL)
 	{	
 		printf("ERROR GROS BOUFFON\n");
 		return (EXIT_FAILURE);
 	}
 	if (is_sorted(t_stack_a))
 		printf("SORTED\n");
-	t_stack_b->next = NULL;
 	if (DEBUG)
-		print_all_items(t_stack_a);
+	//	print_all_items(t_stack_a);
 		//print_all_items(t_stack_a);
 	sort_manager(&t_stack_a, &t_stack_b);	
 	print_stack(t_stack_a, t_stack_b);

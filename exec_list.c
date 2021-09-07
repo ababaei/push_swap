@@ -16,3 +16,16 @@ void	exe_lstadd_back(t_exec **alst, t_exec *new)
 	(*alst)->next = new;
 	*alst = head;
 }
+
+int	exe_lstsize(t_exec *lst)
+{
+	int	tmp;
+
+	tmp = 0;
+	while (lst)
+	{
+		tmp++;
+		lst = lst->next;
+	}
+	return (tmp);
+}
