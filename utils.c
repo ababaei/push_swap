@@ -10,9 +10,9 @@ char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins)
 		rotate_stack(stack_a);
 	else if (ft_strncmp("rb", ins, ft_strlen(ins)) == 0)
 		rotate_stack(stack_b);
-	else if (ft_strncmp("pa", ins, ft_strlen(ins)) == 0)
-		push_stack(stack_a, stack_b);
 	else if (ft_strncmp("pb", ins, ft_strlen(ins)) == 0)
+		push_stack(stack_a, stack_b);
+	else if (ft_strncmp("pa", ins, ft_strlen(ins)) == 0)
 		push_stack(stack_b, stack_a);
 	else if (ft_strncmp("rra", ins, ft_strlen(ins)) == 0)
 		rev_rotate_stack(stack_a);
@@ -23,28 +23,28 @@ char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins)
 
 int	is_biggest(t_list *stack)
 {
-	int ret;
+	int nbr;
 
-	ret = stack->content;
+	nbr = stack->content;
 	while (stack)
 	{
-		if (stack->content > ret)
-			ret = stack->content;
+		if (nbr < stack->content)
+			return (0);
 		stack = stack->next;
 	}
-	return (ret);
+	return (1);
 }
 
 int	is_little(t_list *stack)
 {
-	int ret;
+	int nbr;
 
-	ret = stack->content;
+	nbr = stack->content;
 	while (stack)
 	{
-		if (stack->content < ret)
-			ret = stack->content;
+		if (nbr > stack->content)
+			return (0);
 		stack = stack->next;
 	}
-	return (ret);
+	return (1);
 }

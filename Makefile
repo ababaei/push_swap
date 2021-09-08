@@ -10,6 +10,7 @@ SRC = main.c \
 	  sort_manager.c \
 	  sort_min.c \
 	  exec_list.c \
+	  radix_sort.c \
 	  utils.c
 	
 

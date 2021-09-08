@@ -26,6 +26,7 @@ void	find_indice(t_list **stack)
 			cursor = cursor->next;
 		}
 		(*stack)->b_indice = ft_itoa_base((*stack)->indice, "01");
+		(*stack)->i = ft_strlen((*stack)->b_indice);
 		*stack = (*stack)->next;
 	}
 	*stack = head;

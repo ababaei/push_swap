@@ -11,6 +11,7 @@ typedef struct		s_list
 {
 	int				content;
 	char			*b_indice;
+	int				i;
 	int				indice;
 	struct s_list	*next;
 }					t_list;
@@ -31,9 +32,10 @@ void	rev_rotate_stack(t_list **stack);
 void	push_stack(t_list **from, t_list **to);
 
 int		sort_manager(t_list	**stack_a, t_list **stack_b);
-t_exec 	*sort_2(t_list **stack_a, t_list **stack_b);
-t_exec 	*sort_3(t_list **stack_a, t_list **stack_b);
-t_exec 	*sort_5(t_list **stack_a, t_list **stack_b);
+void	sort_2(t_list **stack_a, t_list **stack_b, t_exec **lst);
+void	sort_3(t_list **stack_a, t_list **stack_b, t_exec **lst);
+void	sort_5(t_list **stack_a, t_list **stack_b, t_exec **lst);
+void	radix_sort(t_list **stack_a, t_list **stack_b, t_exec **lst);
 
 char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins);
 int 	is_biggest(t_list *stack);

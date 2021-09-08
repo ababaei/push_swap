@@ -46,7 +46,8 @@ int main(int argc, char **argv)
 	//	print_all_items(t_stack_a);
 		//print_all_items(t_stack_a);
 	sort_manager(&t_stack_a, &t_stack_b);	
-	print_stack(t_stack_a, t_stack_b);
+	//printf("__________________\n\n");
+	//print_stack(t_stack_a, t_stack_b);
 	/*
 	swap_stack(&t_stack_a);
 	print_stack(t_stack_a, t_stack_b);

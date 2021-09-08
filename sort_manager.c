@@ -11,13 +11,16 @@ int		sort_manager(t_list **stack_a, t_list **stack_b)
 
 	int size;
 	size = ft_lstsize(*stack_a);
-	printf("size = %i\n", size);
+	exec_list = NULL;
+	//printf("size = %i\n\n", size);
 	if (size == 2)
-		exec_list = sort_2(stack_a, stack_b);
+		sort_2(stack_a, stack_b, &exec_list);
 	else if (size == 3)
-		exec_list = sort_3(stack_a, stack_b);
+		sort_3(stack_a, stack_b, &exec_list);
 	else if (size <= 5)
-		exec_list = sort_5(stack_a, stack_b);
+		sort_5(stack_a, stack_b, &exec_list);
+	else
+		radix_sort(stack_a, stack_b, &exec_list);
 	while (exec_list)
 	{		
 		printf ("%s\n", exec_list->ins);

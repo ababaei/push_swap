@@ -31,11 +31,13 @@ void print_item(t_list *stack)
 | %-*d |\n\
 | indice = %-*d |\n\
 | b_indice = %-*s |\n\
+| i = %-*i |\n\
 | %-*p |\n",
 			slen,stack,
 			slen, stack->content,
 			slen - 9,stack->indice,
 			slen - 11,stack->b_indice,
+			slen - 4, stack->i,
 			slen,stack->next);
 }
 
