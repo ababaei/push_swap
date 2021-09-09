@@ -11,6 +11,7 @@ SRC = main.c \
 	  sort_min.c \
 	  exec_list.c \
 	  radix_sort.c \
+	  clean_exit.c \
 	  utils.c
 	
 

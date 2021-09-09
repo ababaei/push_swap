@@ -32,7 +32,7 @@ void	find_indice(t_list **stack)
 	*stack = head;
 }
 
-t_list *init_stacks(int argc, char **argv)
+t_list *init_stacks(int argc, char **argv, int *errflag)
 {
 	t_list *tmp;
 	t_list *new;
@@ -47,16 +47,16 @@ t_list *init_stacks(int argc, char **argv)
 	while (i < argc)
 	{
 		if (check_arg(argv[i]) == 0)
-			return (NULL);
+			*errflag = 1;
 		new = malloc(sizeof(t_list));
 		if (new == NULL)
-			return(NULL);
+			*errflag = 1;
 		new->content = ft_atoi(argv[i]);
 		ft_lstadd_back(&tmp, new);
 		i++;
 	}
 	find_indice(&tmp);
 	if (check_double(tmp) == 0)
-		return (NULL);
+		*errflag = 1;
 	return (tmp);
 }

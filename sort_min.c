@@ -55,15 +55,18 @@ static void put_out(t_list **stack_a, t_list **stack_b, t_exec **lst)
 void	sort_5(t_list **stack_a, t_list **stack_b, t_exec **lst)
 {
 	t_exec *new;
+	int stack_size;
 
+	stack_size = ft_lstsize(*stack_a);
 	put_out(stack_a, stack_b, lst);
 	sort_3(stack_a, stack_b, lst);
-	while (!is_sorted(*stack_a) || ft_lstsize(*stack_a) != 5)
+	while (!is_sorted(*stack_a) || ft_lstsize(*stack_a) != stack_size)
 	{
 		new = malloc(sizeof(t_exec));
 		new->next = NULL;
 		if (*stack_b && (((*stack_b)->content < (*stack_a)->content 
-				&& (*stack_b)->content > ft_lstlast(*stack_a)->content)
+				&& ((*stack_b)->content > ft_lstlast(*stack_a)->content
+					|| (is_little(*stack_a))))
 				|| (is_little(*stack_a) 
 				&& (*stack_b)->content > ft_lstlast(*stack_a)->content)))
 			new->ins = exe_instruction(stack_a, stack_b, "pa");

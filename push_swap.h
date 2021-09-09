@@ -16,7 +16,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-t_list	*init_stacks(int argc, char **argv);
+t_list	*init_stacks(int argc, char **argv, int *errflag);
 void	fill_num_array(int argc, char **argv, t_list *list);
 void	print_stack(t_list *stack_a, t_list *stack_b);
 void	print_item(t_list *stack);
@@ -31,7 +31,7 @@ void	rotate_stack(t_list **stack);
 void	rev_rotate_stack(t_list **stack);
 void	push_stack(t_list **from, t_list **to);
 
-int		sort_manager(t_list	**stack_a, t_list **stack_b);
+int		sort_manager(t_list	**stack_a, t_list **stack_b, t_exec **lst);
 void	sort_2(t_list **stack_a, t_list **stack_b, t_exec **lst);
 void	sort_3(t_list **stack_a, t_list **stack_b, t_exec **lst);
 void	sort_5(t_list **stack_a, t_list **stack_b, t_exec **lst);
@@ -40,6 +40,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, t_exec **lst);
 char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins);
 int 	is_biggest(t_list *stack);
 int 	is_little(t_list *stack);
-
 void	exe_lstadd_back(t_exec **alst, t_exec *new);
+
+void	clean_exit(t_list *stack_a, t_list *stack_b, t_exec *lst);
 #endif
