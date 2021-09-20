@@ -15,28 +15,18 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-#define DEBUG false
-
 /*
  * keep track of the chainlist head's adress
  *
  * Main.c will manage everything:
- *		-first we need to check the input is OK (letters, INTMAX/MIN, doubles) -> done in init_stacks() 
+ *		-first we need to check the input is OK (letters, INTMAX/MIN, doubles)
+ *			done in init_stacks() 
  *		-If it's ok we can init the stacks and fill stack A -> init_stacks()
- *		-Then we need to choose the sorting algo <10 or >10 numbers (radix sort)
+ *		-Then we need to choose the sorting algo <10 or >10 numbers
  *		-There is also some functions to debug (print_stack) 
  */
 
-static void print_exec(t_exec *lst)
-{
-	while (lst)
-	{		
-		printf ("%s\n", (lst)->ins);
-		lst = (lst)->next;
-	}
-}
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_list	*t_stack_a;
 	t_list	*t_stack_b;
@@ -52,7 +42,7 @@ int main(int argc, char **argv)
 	if (t_stack_a && is_sorted(t_stack_a))
 	{
 		clean_exit(t_stack_a, t_stack_b, exec_list);
-		return(EXIT_SUCCESS);
+		return (EXIT_SUCCESS);
 	}
 	if (t_stack_a == NULL || errflag)
 	{	
@@ -60,8 +50,7 @@ int main(int argc, char **argv)
 		clean_exit(t_stack_a, t_stack_b, exec_list);
 		return (EXIT_FAILURE);
 	}
-	sort_manager(&t_stack_a, &t_stack_b, &exec_list);	
-	print_exec(exec_list);
+	sort_manager(&t_stack_a, &t_stack_b, &exec_list);
 	clean_exit(t_stack_a, t_stack_b, exec_list);
 	return (EXIT_SUCCESS);
 }

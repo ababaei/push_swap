@@ -47,13 +47,19 @@ $(NAME):$(PS_OBJ)
 
 $(CHECKER_NAME):CHECKER_LIBFT $(CHECKER_OBJ)
 	$(CC) $(CHECKER_SRC) -Lchecker_linux/libft/ -lft -o $(CHECKER_NAME)
-	make clean
+	make checker_clean
 
 clean:
-	rm -f *.o 
+	rm -f ps_linux/*.o 
+
+checker_clean:
+	rm -f checker_linux/*.o 
 
 fclean: clean
 	rm -f push_swap
+
+checker_fclean: clean
+	rm -f checker
 
 re: fclean all
 

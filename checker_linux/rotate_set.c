@@ -3,10 +3,8 @@
 
 void	rotate_stack(t_list **stack)
 {
-	t_list *prev;
+	t_list	*prev;
 
-	if (ft_lstsize(*stack) <= 1)
-		return ;
 	prev = *stack;
 	*stack = (*stack)->next;
 	ft_lstadd_back(stack, prev);
@@ -15,11 +13,9 @@ void	rotate_stack(t_list **stack)
 
 void	rev_rotate_stack(t_list **stack)
 {
-	t_list *prev;
-	t_list *head;
+	t_list	*prev;
+	t_list	*head;
 
-	if (ft_lstsize(*stack) <= 1)
-		return ;
 	prev = ft_lstlast(*stack);
 	head = *stack;
 	while ((*stack)->next->next != NULL)

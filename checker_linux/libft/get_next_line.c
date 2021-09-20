@@ -12,7 +12,17 @@
 
 #include "get_next_line.h"
 
-int				get_next_line(int fd, char **line)
+static void	clean_exit(char **tmp, char *buf, int ret)
+{
+	if (ret == 0)
+	{
+		free(tmp);
+		tmp = NULL;
+	}
+	free(buf);
+}
+
+int	get_next_line(int fd, char **line)
 {
 	static char	*tmp = NULL;
 	char		*buf;
@@ -25,29 +35,28 @@ int				get_next_line(int fd, char **line)
 		return (-1);
 	while (!(isincharset(tmp, '\n')) && ret)
 	{
-		if (!(buf = readline(&ret, buf, fd)) ||
-				!(tmp = ft_strjoin(tmp, buf)))
+		buf = readline(&ret, buf, fd);
+		tmp = ft_strjoin(tmp, buf);
+		if (!buf || !tmp)
 			return (-1);
 	}
-	if ((inl = fillline(tmp, line, &ret)) == -1)
+	inl = fillline(tmp, line, &ret);
+	if (inl == -1)
 		return (-1);
 	tmp = ft_substr(tmp, inl + 1);
-	if (ret == 0)
-	{
-		free(tmp);
-		tmp = NULL;
-	}
-	free(buf);
+	clean_exit(&tmp, buf, ret);
 	return (ret);
 }
 
-char			*readline(int *ret, char *str, int fd)
+char	*readline(int *ret, char *str, int fd)
 {
 	free(str);
 	str = NULL;
-	if ((str = malloc(sizeof(char) * (BUFFER_SIZE + 1))) == NULL)
+	str = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (str == NULL)
 		return (0);
-	if ((*ret = read(fd, str, BUFFER_SIZE)) == -1)
+	*ret = read(fd, str, BUFFER_SIZE);
+	if (*ret == -1)
 	{
 		free(str);
 		str = NULL;
@@ -57,14 +66,15 @@ char			*readline(int *ret, char *str, int fd)
 	return (str);
 }
 
-int				fillline(char *str, char **line, int *ret)
+int	fillline(char *str, char **line, int *ret)
 {
-	int			count;
+	int	count;
 
 	count = 0;
 	while (str[count] != '\n' && str[count])
 		count++;
-	if ((*line = malloc(sizeof(char) * (count + 1))) == NULL)
+	*line = malloc(sizeof(char) * (count + 1));
+	if (*line == NULL)
 		return (-1);
 	count = 0;
 	while (str[count] != '\n' && str[count])

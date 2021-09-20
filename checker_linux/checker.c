@@ -2,11 +2,20 @@
 #include <unistd.h>
 #include "libft/libft.h"
 
+static void	print_exec(t_exec *lst)
+{
+	while (lst)
+	{		
+		printf ("%s\n", (lst)->ins);
+		lst = (lst)->next;
+	}
+}
+
 t_exec	*check_instruction(t_list **stack_a, t_list **stack_b)
 {
-	char *line;
-	t_exec *new;
-	t_exec *lst;
+	char	*line;
+	t_exec	*new;
+	t_exec	*lst;
 
 	new = NULL;
 	lst = NULL;
@@ -22,5 +31,5 @@ t_exec	*check_instruction(t_list **stack_a, t_list **stack_b)
 		printf("OK\n");
 	else
 		printf("KO\n");
-	return(lst);
+	return (lst);
 }

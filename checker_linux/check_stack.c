@@ -3,13 +3,15 @@
 #include <limits.h>
 
 /*
- *	In this file we will check the arguments given for doubles, letters and int limits.
+ *	In this file we will check the arguments given for doubles, letters 
+ *	and int limits.
  *	With the help of ft_strtol i can check for letters and limits.
  *	Is_sorted let me check if the stack is sorted.
- *	And in check_doubles() i'll look for arguments that appears two or more times.
+ *	And in check_doubles() i'll look for arguments that appears two 
+ *	or more times.
 */
 
-int is_sorted(t_list *stack)
+int	is_sorted(t_list *stack)
 {
 	while (stack->next)
 	{
@@ -22,9 +24,9 @@ int is_sorted(t_list *stack)
 
 int	check_double(t_list *stack)
 {
-	t_list *head;
-	t_list *cursor;
-	int tmp;
+	t_list	*head;
+	t_list	*cursor;
+	int		tmp;
 
 	head = stack;
 	while (stack)
@@ -35,7 +37,7 @@ int	check_double(t_list *stack)
 		{
 			if (cursor->content == tmp && stack != cursor)
 				return (0);
-			cursor = cursor->next;	
+			cursor = cursor->next;
 		}
 		stack = stack->next;
 	}
@@ -44,8 +46,8 @@ int	check_double(t_list *stack)
 
 int	check_arg(char *arg)
 {
-	long nbr;
-	char *end;
+	long	nbr;
+	char	*end;
 
 	nbr = ft_strtol(arg, &end, 10);
 	if (end[0] != 0)

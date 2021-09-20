@@ -2,15 +2,16 @@
 #include <stdio.h>
 
 /*
- * That file will contain 2 functions that will swap the first and second element of a 
- * stack. Either A or B or both at the same time. If the stack concerned have 1 element
- * or is empty, nothing is to be done.
+ * That file will contain 2 functions that will swap the first and 
+ * second element of a stack. 
+ * Either A or B or both at the same time.
+ * If the stack concerned have 1 element or is empty, nothing is to be done.
  */
 
 void	swap_stack(t_list **stack)
 {
 	t_list	*prev;
-	int size;
+	int		size;
 
 	size = ft_lstsize(*stack);
 	if (size <= 1)

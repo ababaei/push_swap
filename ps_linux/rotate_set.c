@@ -3,7 +3,7 @@
 
 void	rotate_stack(t_list **stack)
 {
-	t_list *prev;
+	t_list	*prev;
 
 	prev = *stack;
 	*stack = (*stack)->next;
@@ -13,8 +13,8 @@ void	rotate_stack(t_list **stack)
 
 void	rev_rotate_stack(t_list **stack)
 {
-	t_list *prev;
-	t_list *head;
+	t_list	*prev;
+	t_list	*head;
 
 	prev = ft_lstlast(*stack);
 	head = *stack;
@@ -23,7 +23,6 @@ void	rev_rotate_stack(t_list **stack)
 	(*stack)->next = NULL;
 	*stack = head;
 	ft_lstadd_front(stack, prev);
-	
 }
 
 void	rotate_both(t_list **stack_a, t_list **stack_b)

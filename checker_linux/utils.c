@@ -18,12 +18,12 @@ char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins)
 		rev_rotate_stack(stack_a);
 	else if (ft_strncmp("rrb", ins, ft_strlen(ins)) == 0)
 		rev_rotate_stack(stack_b);
-	return (ins);	
+	return (ins);
 }
 
 int	is_biggest(t_list *stack)
 {
-	int nbr;
+	int	nbr;
 
 	nbr = stack->content;
 	while (stack)
@@ -37,7 +37,7 @@ int	is_biggest(t_list *stack)
 
 int	is_little(t_list *stack)
 {
-	int nbr;
+	int	nbr;
 
 	nbr = stack->content;
 	while (stack)

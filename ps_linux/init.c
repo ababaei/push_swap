@@ -3,16 +3,18 @@
 #include <limits.h>
 
 /*
- * In this file i have my init stack function, it will check if everything is ok and then fill the variables.
+ * In this file i have my init stack function, it will check if everything 
+ * is ok and then fill the variables.
  * the checking functions are in the check_stack.c file
  * Then I initialize the stack and fill the content variable.
- * After the list is filled, I use an other function to find each nbr indice and its binary equivalent
+ * After the list is filled, I use an other function to find each 
+ * nbr indice and its binary equivalent
  */
 
 void	find_indice(t_list **stack)
 {
-	t_list *head;
-	t_list *cursor;
+	t_list	*head;
+	t_list	*cursor;
 
 	head = *stack;
 	while (*stack)
@@ -32,11 +34,11 @@ void	find_indice(t_list **stack)
 	*stack = head;
 }
 
-t_list *init_stacks(int argc, char **argv, int *errflag)
+t_list	*init_stacks(int argc, char **argv, int *errflag)
 {
-	t_list *tmp;
-	t_list *new;
-	int i;
+	t_list	*tmp;
+	t_list	*new;
+	int		i;
 
 	i = 2;
 	if (check_arg(argv[1]) == 0)

@@ -4,13 +4,14 @@
 
 /*
  * This file contain the radix sort algorithm.
- * The idea is to check unit by unit on a binary scale, and put on A or B stack in function.
+ * The idea is to check unit by unit on a binary scale, 
+ * and put on A or B stack in function.
  * Then putting back the block and doing it again until the stack A is sorted.
  */
 
-static void	all_on_A(t_list **stack_a, t_list **stack_b, t_exec **lst)
+static void	all_on_a(t_list **stack_a, t_list **stack_b, t_exec **lst)
 {
-	t_exec *new;
+	t_exec	*new;
 
 	while (*stack_b)
 	{
@@ -23,8 +24,8 @@ static void	all_on_A(t_list **stack_a, t_list **stack_b, t_exec **lst)
 
 void	radix_sort(t_list **stack_a, t_list **stack_b, t_exec **lst)
 {
-	int size;
-	t_exec *new;
+	int		size;
+	t_exec	*new;
 
 	while (!is_sorted(*stack_a))
 	{
@@ -41,6 +42,6 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, t_exec **lst)
 			size--;
 			exe_lstadd_back(lst, new);
 		}
-		all_on_A(stack_a, stack_b, lst);
+		all_on_a(stack_a, stack_b, lst);
 	}
 }

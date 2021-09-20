@@ -10,7 +10,7 @@
 
 void	sort_2(t_list **stack_a, t_list **stack_b, t_exec **lst)
 {
-	t_exec *new;
+	t_exec	*new;
 
 	new = malloc(sizeof(t_exec));
 	new->next = NULL;
@@ -20,7 +20,7 @@ void	sort_2(t_list **stack_a, t_list **stack_b, t_exec **lst)
 
 void	sort_3(t_list **stack_a, t_list **stack_b, t_exec **lst)
 {
-	t_exec *new;
+	t_exec	*new;
 
 	while (!is_sorted(*stack_a))
 	{
@@ -39,9 +39,9 @@ void	sort_3(t_list **stack_a, t_list **stack_b, t_exec **lst)
 	}
 }
 
-static void put_out(t_list **stack_a, t_list **stack_b, t_exec **lst)
+static void	put_out(t_list **stack_a, t_list **stack_b, t_exec **lst)
 {
-	t_exec *new;
+	t_exec	*new;
 
 	while (ft_lstsize(*stack_a) != 3)
 	{
@@ -54,8 +54,8 @@ static void put_out(t_list **stack_a, t_list **stack_b, t_exec **lst)
 
 void	sort_5(t_list **stack_a, t_list **stack_b, t_exec **lst)
 {
-	t_exec *new;
-	int stack_size;
+	t_exec	*new;
+	int		stack_size;
 
 	stack_size = ft_lstsize(*stack_a);
 	put_out(stack_a, stack_b, lst);
@@ -64,11 +64,11 @@ void	sort_5(t_list **stack_a, t_list **stack_b, t_exec **lst)
 	{
 		new = malloc(sizeof(t_exec));
 		new->next = NULL;
-		if (*stack_b && (((*stack_b)->content < (*stack_a)->content 
-				&& ((*stack_b)->content > ft_lstlast(*stack_a)->content
-					|| (is_little(*stack_a))))
-				|| (is_little(*stack_a) 
-				&& (*stack_b)->content > ft_lstlast(*stack_a)->content)))
+		if (*stack_b && (((*stack_b)->content < (*stack_a)->content
+					&& ((*stack_b)->content > ft_lstlast(*stack_a)->content
+						|| (is_little(*stack_a))))
+				|| (is_little(*stack_a)
+					&& (*stack_b)->content > ft_lstlast(*stack_a)->content)))
 			new->ins = exe_instruction(stack_a, stack_b, "pa");
 		else
 			new->ins = exe_instruction(stack_a, stack_b, "ra");
