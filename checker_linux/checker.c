@@ -20,7 +20,7 @@ t_exec	*check_instruction(t_list **stack_a, t_list **stack_b, int *errflag)
 	free(line);
 	if (is_sorted(*stack_a))
 		printf("OK\n");
-	else if (!errflag)
+	else if (!is_sorted(*stack_a) && !*errflag)
 		printf("KO\n");
 	return (lst);
 }

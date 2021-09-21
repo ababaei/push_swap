@@ -1,6 +1,7 @@
 #include "libft/libft.h"
 
-char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins, int *errflag)
+char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins,
+		int *errflag)
 {
 	if (ft_strncmp("sa", ins, ft_strlen(ins)) == 0)
 		swap_stack(stack_a);
