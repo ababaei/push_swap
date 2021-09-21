@@ -44,13 +44,13 @@ int	main(int argc, char **argv)
 		clean_exit(t_stack_a, t_stack_b, exec_list);
 		return (EXIT_SUCCESS);
 	}
+	exec_list = check_instruction(&t_stack_a, &t_stack_b, &errflag);
 	if (t_stack_a == NULL || errflag)
 	{	
 		write(2, "Error\n", 6);
 		clean_exit(t_stack_a, t_stack_b, exec_list);
 		return (EXIT_FAILURE);
 	}
-	exec_list = check_instruction(&t_stack_a, &t_stack_b);
 	clean_exit(t_stack_a, t_stack_b, exec_list);
 	return (EXIT_SUCCESS);
 }

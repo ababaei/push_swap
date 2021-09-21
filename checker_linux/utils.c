@@ -1,6 +1,6 @@
 #include "libft/libft.h"
 
-char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins)
+char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins, int *errflag)
 {
 	if (ft_strncmp("sa", ins, ft_strlen(ins)) == 0)
 		swap_stack(stack_a);
@@ -18,6 +18,8 @@ char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins)
 		rev_rotate_stack(stack_a);
 	else if (ft_strncmp("rrb", ins, ft_strlen(ins)) == 0)
 		rev_rotate_stack(stack_b);
+	else
+		*errflag = 1;
 	return (ins);
 }
 

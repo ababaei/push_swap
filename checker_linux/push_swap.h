@@ -31,12 +31,12 @@ void	rotate_stack(t_list **stack);
 void	rev_rotate_stack(t_list **stack);
 void	push_stack(t_list **from, t_list **to);
 
-char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins);
+char	*exe_instruction(t_list **stack_a, t_list **stack_b, char *ins, int *errflag);
 int		is_biggest(t_list *stack);
 int		is_little(t_list *stack);
 void	exe_lstadd_back(t_exec **alst, t_exec *new);
 
-t_exec	*check_instruction(t_list **stack_a, t_list **stack_b);
+t_exec	*check_instruction(t_list **stack_a, t_list **stack_b, int *errflag);
 
 void	clean_exit(t_list *stack_a, t_list *stack_b, t_exec *lst);
 #endif

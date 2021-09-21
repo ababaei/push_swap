@@ -16,7 +16,7 @@ static void	clean_exit(char **tmp, char *buf, int ret)
 {
 	if (ret == 0)
 	{
-		free(tmp);
+		free(*tmp);
 		tmp = NULL;
 	}
 	free(buf);

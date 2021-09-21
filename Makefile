@@ -1,33 +1,42 @@
 CC = gcc
 
-PS_SRC = ps_linux/main.c \
-	  	ps_linux/init.c \
-	  	ps_linux/debug.c \
-	  	ps_linux/check_stack.c \
-	  	ps_linux/swap_set.c \
-	  	ps_linux/rotate_set.c \
-	  	ps_linux/push_set.c \
-	  	ps_linux/sort_manager.c \
-	  	ps_linux/sort_min.c \
-	  	ps_linux/exec_list.c \
-	  	ps_linux/radix_sort.c \
-	  	ps_linux/clean_exit.c \
-	  	ps_linux/utils.c
+PS_SRC = main.c \
+	  	init.c \
+	  	debug.c \
+	  	check_stack.c \
+	  	swap_set.c \
+	  	rotate_set.c \
+	  	push_set.c \
+	  	sort_manager.c \
+	  	sort_min.c \
+	  	exec_list.c \
+	  	radix_sort.c \
+	  	clean_exit.c \
+	  	utils.c
 	
-CHECKER_SRC = checker_linux/main.c \
-	  		checker_linux/init.c \
-	  		checker_linux/debug.c \
-	  		checker_linux/check_stack.c \
-	  		checker_linux/swap_set.c \
-	  		checker_linux/rotate_set.c \
-	  		checker_linux/push_set.c \
-	  		checker_linux/exec_list.c \
-	  		checker_linux/clean_exit.c \
-			checker_linux/checker.c \
-	  		checker_linux/utils.c
+CHECKER_SRC = main.c \
+	  		init.c \
+	  		debug.c \
+	  		check_stack.c \
+	  		swap_set.c \
+	  		rotate_set.c \
+	  		push_set.c \
+	  		exec_list.c \
+	  		clean_exit.c \
+			checker.c \
+	  		utils.c
 
 PS_OBJ = $(PS_SRC:.c=.o)
 CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
+
+PSDIR = ps_linux/
+CHECKERDIR = checker_linux/
+
+DIROBJ = objs/
+CHECKEROBJ = bonus_objs/
+
+DIROBJS = $(addprefix $(DIROBJ), $(PS_OBJ))
+CHECKER_OBJS = $(addprefix $(CHECKEROBJ), $(CHECKER_OBJ))
 
 FLAGS = -Wall -Wextra -Werror -g
 NAME = push_swap
@@ -36,24 +45,33 @@ CHECKER_NAME = checker
 all:LIBFT $(NAME)
 
 LIBFT:
-	make -C ps_linux/libft/ 
+	@echo making libft
+	@make -C ps_linux/libft/ 
+
+$(CHECKEROBJ)%.o: $(CHECKERDIR)%.c
+	@mkdir -p $(CHECKEROBJ)
+	@echo compiling: $<
+	@$(CC) $(FLAGS) -c $< -o $@
+
+$(DIROBJ)%.o: $(PSDIR)%.c
+	@mkdir -p $(DIROBJ)
+	@echo compiling: $<
+	@$(CC) $(FLAGS) -c $< -o $@
 
 CHECKER_LIBFT:
 	make -C checker_linux/libft/
 
-$(NAME):$(PS_OBJ)
-	$(CC) $(PS_SRC) $(FLAGS) -Lps_linux/libft/ -lft -o $(NAME)
-	make clean
+$(NAME):$(DIROBJS)
+	@echo Creating executable $(NAME)
+	@$(CC) $(DIROBJ)*.o $(FLAGS) -Lps_linux/libft/ -lft -o $(NAME)
 
-$(CHECKER_NAME):CHECKER_LIBFT $(CHECKER_OBJ)
-	$(CC) $(CHECKER_SRC) -Lchecker_linux/libft/ -lft -o $(CHECKER_NAME)
-	make checker_clean
+$(CHECKER_NAME):CHECKER_LIBFT $(CHECKER_OBJS)
+	@echo Creating executable $(CHECKER_NAME)
+	@$(CC) $(CHECKEROBJ)*.o $(FLAGS) -Lchecker_linux/libft/ -lft -o $(CHECKER_NAME)
 
 clean:
-	rm -f ps_linux/*.o 
-
-checker_clean:
-	rm -f checker_linux/*.o 
+	rm -rf $(DIROBJ)
+	rm -rf $(CHECKEROBJ)
 
 fclean: clean
 	rm -f push_swap

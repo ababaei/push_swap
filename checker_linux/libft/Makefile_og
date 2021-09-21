@@ -59,7 +59,10 @@ SRC = ft_atoi.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
 		ft_lstsize.c \
-		ft_strtol.c
+		ft_strtol.c \
+		get_next_line.c \
+		get_next_line_utils.c
+
 
 NAME = libft.a
 
@@ -73,13 +76,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-%.o:%.c
-	@echo compiling: $< 
-	@$(CC) $(CFLAGS) $< -c
-
 $(NAME): $(OBJ)
-	@echo Creating archive libft.a
-	@ar rc $(NAME) $(OBJ)
+	ar rc $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)

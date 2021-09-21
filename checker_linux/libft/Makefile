@@ -63,7 +63,6 @@ SRC = ft_atoi.c \
 		get_next_line.c \
 		get_next_line_utils.c
 
-
 NAME = libft.a
 
 CC = gcc
@@ -76,8 +75,13 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
+%.o:%.c
+	@echo compiling: $< 
+	@$(CC) $(CFLAGS) $< -c
+
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
+	@echo Creating archive libft.a
+	@ar rc $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)
