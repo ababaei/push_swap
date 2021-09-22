@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	t_stack_a = init_stacks(argc, argv, &errflag);
 	t_stack_b = NULL;
 	exec_list = NULL;
-	if (t_stack_a && is_sorted(t_stack_a))
+	if (t_stack_a && is_sorted(t_stack_a) && !errflag)
 	{
 		clean_exit(t_stack_a, t_stack_b, exec_list);
 		return (EXIT_SUCCESS);
