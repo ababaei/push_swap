@@ -75,8 +75,6 @@ clean:
 
 fclean: clean
 	rm -f push_swap
-
-checker_fclean: clean
 	rm -f checker
 
 re: fclean all

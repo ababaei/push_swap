@@ -50,7 +50,7 @@ int	check_arg(char *arg)
 	char	*end;
 
 	nbr = ft_strtol(arg, &end, 10);
-	if (end[0] != 0)
+	if (end[0] != 0 || *arg == 0)
 		return (0);
 	if (nbr > INT_MAX || nbr < INT_MIN)
 		return (0);
